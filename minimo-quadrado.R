@@ -1,5 +1,18 @@
 #!/usr/bin/Rscript
 
+##########################################################################################
+#                                                                                        #
+# Desenvolvido por: Isaac Pinheiro <isaacpnhr@gmail.com>                                 #
+#                                                                                        #
+# Este script foi desenvolvido para auxiliar no cálculo do Método dos Mínimos Quadrados  #
+# nas disciplinas de “Fenômenos” na UFABC. Nestas disciplinas, utilizamos X, Y e o erro  #
+# de Y para calcular A, B e seus respectivos erros.                                      #
+#                                                                                        #
+# Este script foi baseado nos materiais do Professor Alysson Fábio Ferrari.              #
+#                                                                                        #
+##########################################################################################
+
+# Esta função calcula o coeficiente angular A:
 calcularA = function(y, err_y, x) {
 
   err_y2 = err_y ** 2
@@ -32,6 +45,7 @@ calcularA = function(y, err_y, x) {
 
 }
 
+# Esta função calcula o erro de A:
 calcularErroA = function(x, err_y) {
 
   err_y2 = err_y ** 2
@@ -56,6 +70,7 @@ calcularErroA = function(x, err_y) {
 
 }
 
+# Esta função calcula o coeficiente linear B:
 calcularB = function(y, err_y, x, a) {
 
   err_y2 = err_y ** 2
@@ -76,6 +91,7 @@ calcularB = function(y, err_y, x, a) {
 
 }
 
+# Esta função calcular o erro de B:
 calcularErroB = function(x, err_y) {
 
   err_y2 = err_y ** 2
@@ -100,6 +116,7 @@ calcularErroB = function(x, err_y) {
 
 }
 
+# Esta função calcula o Mínimo Quadrado:
 calcularMinimoQuadrado = function(y, err_y, x, a, b) {
 
   m = (y - ((a * x) + b)) / err_y
@@ -114,8 +131,15 @@ calcularMinimoQuadrado = function(y, err_y, x, a, b) {
 
 }
 
+# Substitua os dados contidos nos vetores x, y e err_y pelos dados obtidos no seu experimento:
+
+# Vetor com os dados do eixo X
 x = c(1, 2, 3, 4, 5)
+
+# Vetor com os dados do eixo Y
 y = c(2, 4, 6, 8, 10)
+
+# Vetor com os erros dos dados do eixo Y
 err_y = c(0.1, 0.1, 0.1, 0.1, 0.1)
 
 a = calcularA(y, err_y, x)
